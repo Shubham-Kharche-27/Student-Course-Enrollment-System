@@ -17,14 +17,14 @@ public class Course {
     private String courseDuration;
     @OneToMany(mappedBy = "course",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonManagedReference(value = "courseEnrollment")
-    private List<Enrollment> list = new ArrayList<>();
+    private List<Enrollment> courseList = new ArrayList<>();
 
     public Course(int courseId, String courseTitle, String courseDescription, String courseDuration, List<Enrollment> list) {
         this.courseId = courseId;
         this.courseTitle = courseTitle;
         this.courseDescription = courseDescription;
         this.courseDuration = courseDuration;
-        this.list = list;
+        this.courseList = list;
     }
 
     public Course() {
@@ -63,10 +63,10 @@ public class Course {
     }
 
     public List<Enrollment> getList() {
-        return list;
+        return courseList;
     }
 
     public void setList(List<Enrollment> list) {
-        this.list = list;
+        this.courseList = list;
     }
 }

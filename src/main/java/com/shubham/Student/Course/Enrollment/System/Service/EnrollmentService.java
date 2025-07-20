@@ -1,9 +1,14 @@
 package com.shubham.Student.Course.Enrollment.System.Service;
 
 import com.shubham.Student.Course.Enrollment.System.Dto.EnrollmentDto;
+import com.shubham.Student.Course.Enrollment.System.Entity.Course;
 import com.shubham.Student.Course.Enrollment.System.Entity.Enrollment;
+import com.shubham.Student.Course.Enrollment.System.Entity.Student;
 import com.shubham.Student.Course.Enrollment.System.Exception.EnrollmentNotFoundException;
+import com.shubham.Student.Course.Enrollment.System.Exception.StudentNotFoundException;
+import com.shubham.Student.Course.Enrollment.System.Repository.CourseRepo;
 import com.shubham.Student.Course.Enrollment.System.Repository.EnrollmentRepo;
+import com.shubham.Student.Course.Enrollment.System.Repository.StudentRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +24,12 @@ public class EnrollmentService {
 
     @Autowired
     private EnrollmentRepo enrollmentRepo;
+
+    @Autowired
+    private StudentRepo studentRepo;
+
+    @Autowired
+    private CourseRepo courseRepo;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -46,12 +57,18 @@ public class EnrollmentService {
 
     public ResponseEntity<String> updateEnrollmentData(int enrollmentId,EnrollmentDto enrollmentDto){
         Enrollment enrollment = enrollmentRepo.findById(enrollmentId).orElseThrow(()->new EnrollmentNotFoundException("Enrollment not found!"));
-        if(enrollmentDto.getStudent()!=null){
-            enrollment.setStudent(enrollmentDto.getStudent());
+        if(enrollmentDto.getStudent() != null){
+            int studentId = enrollmentDto.getStudent().getStudentId();
+            Student studentEntity = studentRepo.findById(studentId).orElseThrow(() -> new StudentNotFoundException("Student not found"));
+            enrollment.setStudent(studentEntity);
         }
-        if(enrollmentDto.getCourse()!=null){
-            enrollment.setCourse(enrollmentDto.getCourse());
+
+        if(enrollmentDto.getCourse() != null){
+            int courseId = enrollmentDto.getCourse().getCourseId();
+            Course courseEntity = courseRepo.findById(courseId).orElseThrow(() -> new StudentNotFoundException("Course not found"));
+            enrollment.setCourse(courseEntity);
         }
+
         if(enrollmentDto.getEnrollmentDate()!=null){
             enrollment.setEnrollmentDate(enrollmentDto.getEnrollmentDate());
         }

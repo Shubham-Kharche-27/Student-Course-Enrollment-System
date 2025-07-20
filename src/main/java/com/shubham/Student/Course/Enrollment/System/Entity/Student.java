@@ -18,7 +18,7 @@ public class Student {
     private String studentGender;
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonManagedReference(value = "studentEnrollment")
-    List<Enrollment> list = new ArrayList<>();
+    List<Enrollment> studentList = new ArrayList<>();
 
     public Student(int studentId, String studentName, String studentEmail, LocalDate studentDob, String studentGender, List<Enrollment> list) {
         this.studentId = studentId;
@@ -26,7 +26,7 @@ public class Student {
         this.studentEmail = studentEmail;
         this.studentDob = studentDob;
         this.studentGender = studentGender;
-        this.list = list;
+        this.studentList = list;
     }
 
     public Student() {
@@ -73,10 +73,10 @@ public class Student {
     }
 
     public List<Enrollment> getList() {
-        return list;
+        return studentList;
     }
 
     public void setList(List<Enrollment> list) {
-        this.list = list;
+        this.studentList = list;
     }
 }

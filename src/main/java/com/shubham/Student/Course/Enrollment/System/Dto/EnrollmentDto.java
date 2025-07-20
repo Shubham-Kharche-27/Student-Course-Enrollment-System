@@ -1,15 +1,13 @@
 package com.shubham.Student.Course.Enrollment.System.Dto;
 
-import com.shubham.Student.Course.Enrollment.System.Entity.Course;
-import com.shubham.Student.Course.Enrollment.System.Entity.Student;
 import java.time.LocalDate;
 
 
 public class EnrollmentDto {
 
     private int enrollmentId;
-    private Student student;
-    private Course course;
+    private StudentDto student;
+    private CourseDto course;
     private LocalDate enrollmentDate;
     private String enrollmentStatus;
     private String enrollmentGrade;
@@ -22,19 +20,19 @@ public class EnrollmentDto {
         this.enrollmentId = enrollmentId;
     }
 
-    public Student getStudent() {
+    public StudentDto getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(StudentDto student) {
         this.student = student;
     }
 
-    public Course getCourse() {
+    public CourseDto getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(CourseDto course) {
         this.course = course;
     }
 
