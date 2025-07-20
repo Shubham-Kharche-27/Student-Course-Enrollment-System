@@ -17,7 +17,7 @@ public class Student {
     private LocalDate studentDob;
     private String studentGender;
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonManagedReference(value = "studentEnrollment")
     List<Enrollment> list = new ArrayList<>();
 
     public Student(int studentId, String studentName, String studentEmail, LocalDate studentDob, String studentGender, List<Enrollment> list) {

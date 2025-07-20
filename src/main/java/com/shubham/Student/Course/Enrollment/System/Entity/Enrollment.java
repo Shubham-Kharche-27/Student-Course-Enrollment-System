@@ -1,5 +1,6 @@
 package com.shubham.Student.Course.Enrollment.System.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -11,9 +12,11 @@ public class Enrollment {
     private int enrollmentId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studentId")
+    @JsonBackReference(value = "studentEnrollment")
     private Student student;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId")
+    @JsonBackReference(value = "courseEnrollment")
     private Course course;
     private LocalDate enrollmentDate;
     private String enrollmentStatus;
