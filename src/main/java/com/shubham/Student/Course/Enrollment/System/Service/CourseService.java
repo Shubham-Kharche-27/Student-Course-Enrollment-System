@@ -30,7 +30,7 @@ public class CourseService {
         return new ResponseEntity<>(courseDtoPage, HttpStatus.OK);
     }
 
-    public ResponseEntity<CourseDto> getCourseData(int courseId){
+    public ResponseEntity<CourseDto> getCourseDataById(int courseId){
         Course course = courseRepo.findById(courseId).orElseThrow(()-> new CourseNotFoundException("Course not found!"));
         return new ResponseEntity<>(modelMapper.map(course,CourseDto.class),HttpStatus.OK);
     }
