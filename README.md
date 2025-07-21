@@ -33,27 +33,27 @@ Student (1) ------ (∞) Enrollment (∞) ------ (1) Course
 
 ### 👨‍🎓 Student
 
-- POST `/students` - Create new student
-- GET `/students` - Get all students
-- GET `/students/{id}` - Get student by ID
-- PUT `/students/{id}` - Update student
-- DELETE `/students/{id}` - Delete student
+- POST `/students/post` - Create new student
+- GET `/students/get` - Get all students
+- GET `/students/get/byId/{id}` - Get student by ID
+- PUT `/students/put/{id}` - Update student
+- DELETE `/students/delete/{id}` - Delete student
 
 ### 📘 Course
 
-- POST `/courses` - Create new course
-- GET `/courses` - Get all courses
-- GET `/courses/{id}` - Get course by ID
-- PUT `/courses/{id}` - Update course
-- DELETE `/courses/{id}` - Delete course
+- POST `/courses/post` - Create new course
+- GET `/courses/get` - Get all courses
+- GET `/courses/get/byId/{id}` - Get course by ID
+- PUT `/courses/put/{id}` - Update course
+- DELETE `/courses/delete/{id}` - Delete course
 
 ### 📝 Enrollment
 
-- POST `/enrollments` - Enroll a student in a course
-- GET `/enrollments` - Get all enrollments
-- GET `/enrollments/{id}` - Get enrollment by ID
-- PUT `/enrollments/{id}` - Update enrollment
-- DELETE `/enrollments/{id}` - Delete enrollment
+- POST `/enrollments/post` - Enroll a student in a course
+- GET `/enrollments/get` - Get all enrollments
+- GET `/enrollments/get/byId/{id}` - Get enrollment by ID
+- PUT `/enrollments/put/{id}` - Update enrollment
+- DELETE `/enrollments/delete/{id}` - Delete enrollment
 
 ## ⚙️ Setup Instructions
 
