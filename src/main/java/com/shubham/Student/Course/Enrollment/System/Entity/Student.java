@@ -72,11 +72,11 @@ public class Student {
         this.studentGender = studentGender;
     }
 
-    public List<Enrollment> getList() {
+    public List<Enrollment> getStudentList() {
         return studentList;
     }
 
-    public void setList(List<Enrollment> list) {
-        this.studentList = list;
+    public void setStudentList(List<Enrollment> studentList) {
+        this.studentList = studentList;
     }
 }

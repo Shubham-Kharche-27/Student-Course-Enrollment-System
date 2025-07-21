@@ -6,8 +6,8 @@ import java.time.LocalDate;
 public class EnrollmentDto {
 
     private int enrollmentId;
-    private StudentDto student;
-    private CourseDto course;
+    private int studentId;
+    private int courseId;
     private LocalDate enrollmentDate;
     private String enrollmentStatus;
     private String enrollmentGrade;
@@ -20,20 +20,20 @@ public class EnrollmentDto {
         this.enrollmentId = enrollmentId;
     }
 
-    public StudentDto getStudent() {
-        return student;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStudent(StudentDto student) {
-        this.student = student;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public CourseDto getCourse() {
-        return course;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse(CourseDto course) {
-        this.course = course;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public LocalDate getEnrollmentDate() {

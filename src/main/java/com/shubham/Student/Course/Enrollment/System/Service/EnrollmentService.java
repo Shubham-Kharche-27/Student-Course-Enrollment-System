@@ -4,6 +4,7 @@ import com.shubham.Student.Course.Enrollment.System.Dto.EnrollmentDto;
 import com.shubham.Student.Course.Enrollment.System.Entity.Course;
 import com.shubham.Student.Course.Enrollment.System.Entity.Enrollment;
 import com.shubham.Student.Course.Enrollment.System.Entity.Student;
+import com.shubham.Student.Course.Enrollment.System.Exception.CourseNotFoundException;
 import com.shubham.Student.Course.Enrollment.System.Exception.EnrollmentNotFoundException;
 import com.shubham.Student.Course.Enrollment.System.Exception.StudentNotFoundException;
 import com.shubham.Student.Course.Enrollment.System.Repository.CourseRepo;
@@ -46,41 +47,56 @@ public class EnrollmentService {
         return new ResponseEntity<>(modelMapper.map(enrollment,EnrollmentDto.class),HttpStatus.OK);
     }
 
-    public ResponseEntity<String> createEnrollmentData(EnrollmentDto enrollmentDto){
-        if(enrollmentDto!=null){
-            Enrollment enrollment = modelMapper.map(enrollmentDto,Enrollment.class);
+    public ResponseEntity<String> createEnrollmentData(EnrollmentDto enrollmentDto) {
+        if (enrollmentDto != null) {
+            Enrollment enrollment = new Enrollment();
+            enrollment.setEnrollmentDate(enrollmentDto.getEnrollmentDate());
+            enrollment.setEnrollmentStatus(enrollmentDto.getEnrollmentStatus());
+            enrollment.setEnrollmentGrade(enrollmentDto.getEnrollmentGrade());
+            Student student = studentRepo.findById(enrollmentDto.getStudentId()).orElse(null);
+            Course course = courseRepo.findById(enrollmentDto.getCourseId()).orElse(null);
+            if (student == null || course == null) {
+                return new ResponseEntity<>("Student or Course not found!", HttpStatus.NOT_FOUND);
+            }
+            enrollment.setStudent(student);
+            enrollment.setCourse(course);
+            student.getStudentList().add(enrollment);
+            course.getCourseList().add(enrollment);
             enrollmentRepo.save(enrollment);
-            return new ResponseEntity<>("Enrollment data created successfully!",HttpStatus.CREATED);
+            return new ResponseEntity<>("Enrollment data created successfully!", HttpStatus.CREATED);
         }
-        return new ResponseEntity<>("Enrollment data not created!",HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Enrollment data not created!", HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity<String> updateEnrollmentData(int enrollmentId,EnrollmentDto enrollmentDto){
-        Enrollment enrollment = enrollmentRepo.findById(enrollmentId).orElseThrow(()->new EnrollmentNotFoundException("Enrollment not found!"));
-        if(enrollmentDto.getStudent() != null){
-            int studentId = enrollmentDto.getStudent().getStudentId();
+
+    public ResponseEntity<String> updateEnrollmentData(int enrollmentId, EnrollmentDto enrollmentDto) {
+        Enrollment enrollment = enrollmentRepo.findById(enrollmentId).orElseThrow(() -> new EnrollmentNotFoundException("Enrollment not found!"));
+        if (enrollmentDto.getStudentId() != 0) {
+            int studentId = enrollmentDto.getStudentId();
             Student studentEntity = studentRepo.findById(studentId).orElseThrow(() -> new StudentNotFoundException("Student not found"));
             enrollment.setStudent(studentEntity);
+            studentEntity.getStudentList().add(enrollment);
         }
-
-        if(enrollmentDto.getCourse() != null){
-            int courseId = enrollmentDto.getCourse().getCourseId();
-            Course courseEntity = courseRepo.findById(courseId).orElseThrow(() -> new StudentNotFoundException("Course not found"));
+        if (enrollmentDto.getCourseId() != 0) {
+            int courseId = enrollmentDto.getCourseId();
+            Course courseEntity = courseRepo.findById(courseId)
+                    .orElseThrow(() -> new CourseNotFoundException("Course not found"));
             enrollment.setCourse(courseEntity);
+            courseEntity.getCourseList().add(enrollment);
         }
-
-        if(enrollmentDto.getEnrollmentDate()!=null){
+        if (enrollmentDto.getEnrollmentDate() != null) {
             enrollment.setEnrollmentDate(enrollmentDto.getEnrollmentDate());
         }
-        if(enrollmentDto.getEnrollmentStatus()!=null){
+        if (enrollmentDto.getEnrollmentStatus() != null) {
             enrollment.setEnrollmentStatus(enrollmentDto.getEnrollmentStatus());
         }
-        if(enrollmentDto.getEnrollmentGrade()!=null){
+        if (enrollmentDto.getEnrollmentGrade() != null) {
             enrollment.setEnrollmentGrade(enrollmentDto.getEnrollmentGrade());
         }
         enrollmentRepo.save(enrollment);
-        return new ResponseEntity<>("Enrollment data updated successfully!",HttpStatus.OK);
+        return new ResponseEntity<>("Enrollment data updated successfully!", HttpStatus.OK);
     }
+
 
     public ResponseEntity<String> deleteEnrollmentData(int enrollmentId){
         Enrollment enrollment = enrollmentRepo.findById(enrollmentId).orElseThrow(()->new EnrollmentNotFoundException("Enrollment not found!"));

@@ -19,12 +19,12 @@ public class Course {
     @JsonManagedReference(value = "courseEnrollment")
     private List<Enrollment> courseList = new ArrayList<>();
 
-    public Course(int courseId, String courseTitle, String courseDescription, String courseDuration, List<Enrollment> list) {
+    public Course(int courseId, String courseTitle, String courseDescription, String courseDuration, List<Enrollment> courseList) {
         this.courseId = courseId;
         this.courseTitle = courseTitle;
         this.courseDescription = courseDescription;
         this.courseDuration = courseDuration;
-        this.courseList = list;
+        this.courseList = courseList;
     }
 
     public Course() {
@@ -62,11 +62,11 @@ public class Course {
         this.courseDuration = courseDuration;
     }
 
-    public List<Enrollment> getList() {
+    public List<Enrollment> getCourseList() {
         return courseList;
     }
 
-    public void setList(List<Enrollment> list) {
-        this.courseList = list;
+    public void setCourseList(List<Enrollment> courseList) {
+        this.courseList = courseList;
     }
 }
