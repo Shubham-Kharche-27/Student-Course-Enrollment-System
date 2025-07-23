@@ -4,6 +4,7 @@ import com.shubham.Student.Course.Enrollment.System.Dto.StudentDto;
 import com.shubham.Student.Course.Enrollment.System.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,26 +21,26 @@ public class StudentController {
             @RequestParam(value = "pageSize",defaultValue = "3")int pageSize,
             @RequestParam(defaultValue = "studentId")String sortBy
     ){
-        return studentService.getAllStudentData(pageNum-1,pageSize,sortBy);
+        return new ResponseEntity<>(studentService.getAllStudentData(pageNum-1,pageSize,sortBy), HttpStatus.OK);
     }
 
     @GetMapping("/get/byId/{studentId}")
     public ResponseEntity<StudentDto> getStudent(@PathVariable int studentId){
-        return studentService.getStudentDataById(studentId);
+        return new ResponseEntity<>(studentService.getStudentDataById(studentId),HttpStatus.OK);
     }
 
     @PostMapping("/post")
-    public ResponseEntity<String> createStudent(@RequestBody StudentDto studentDto){
-        return studentService.createStudentData(studentDto);
+    public ResponseEntity<StudentDto> createStudent(@RequestBody StudentDto studentDto){
+        return new ResponseEntity<>( studentService.createStudentData(studentDto),HttpStatus.CREATED);
     }
 
     @PutMapping("/put/{studentId}")
     public ResponseEntity<String> updateStudent(@PathVariable int studentId,@RequestBody StudentDto studentDto){
-        return studentService.updateStudentData(studentId,studentDto);
+        return new ResponseEntity<>(studentService.updateStudentData(studentId,studentDto),HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{studentId}")
     public ResponseEntity<String> deleteStudent(@PathVariable int studentId){
-        return studentService.deleteStudentData(studentId);
+        return new ResponseEntity<>(studentService.deleteStudentData(studentId),HttpStatus.NO_CONTENT);
     }
 }

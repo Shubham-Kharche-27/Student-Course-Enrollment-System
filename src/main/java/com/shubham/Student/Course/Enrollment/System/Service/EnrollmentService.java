@@ -35,20 +35,18 @@ public class EnrollmentService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public ResponseEntity<Page<EnrollmentDto>> getAllEnrollmentData(int pageNum,int pageSize,String sortBy){
+    public Page<EnrollmentDto> getAllEnrollmentData(int pageNum,int pageSize,String sortBy){
         Pageable pageable = PageRequest.of(pageNum,pageSize, Sort.by(sortBy));
         Page<Enrollment> enrollmentPage = enrollmentRepo.findAll(pageable);
-        Page<EnrollmentDto> enrollmentDtoPage = enrollmentPage.map(Enrollment->modelMapper.map(Enrollment,EnrollmentDto.class));
-        return new ResponseEntity<>(enrollmentDtoPage, HttpStatus.OK);
+        return enrollmentPage.map(Enrollment->modelMapper.map(Enrollment,EnrollmentDto.class));
     }
 
-    public ResponseEntity<EnrollmentDto> getEnrollmentDataById(int enrollmentId){
+    public EnrollmentDto getEnrollmentDataById(int enrollmentId){
         Enrollment enrollment = enrollmentRepo.findById(enrollmentId).orElseThrow(()->new EnrollmentNotFoundException("Enrollment not found!"));
-        return new ResponseEntity<>(modelMapper.map(enrollment,EnrollmentDto.class),HttpStatus.OK);
+        return modelMapper.map(enrollment,EnrollmentDto.class);
     }
 
-    public ResponseEntity<String> createEnrollmentData(EnrollmentDto enrollmentDto) {
-        if (enrollmentDto != null) {
+    public EnrollmentDto createEnrollmentData(EnrollmentDto enrollmentDto) {
             Enrollment enrollment = new Enrollment();
             enrollment.setEnrollmentDate(enrollmentDto.getEnrollmentDate());
             enrollment.setEnrollmentStatus(enrollmentDto.getEnrollmentStatus());
@@ -56,20 +54,17 @@ public class EnrollmentService {
             Student student = studentRepo.findById(enrollmentDto.getStudentId()).orElse(null);
             Course course = courseRepo.findById(enrollmentDto.getCourseId()).orElse(null);
             if (student == null || course == null) {
-                return new ResponseEntity<>("Student or Course not found!", HttpStatus.NOT_FOUND);
+                throw new StudentNotFoundException("Student Or Course Not Found");
             }
             enrollment.setStudent(student);
             enrollment.setCourse(course);
             student.getStudentList().add(enrollment);
             course.getCourseList().add(enrollment);
-            enrollmentRepo.save(enrollment);
-            return new ResponseEntity<>("Enrollment data created successfully!", HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>("Enrollment data not created!", HttpStatus.BAD_REQUEST);
+            return modelMapper.map(enrollmentRepo.save(enrollment),EnrollmentDto.class);
     }
 
 
-    public ResponseEntity<String> updateEnrollmentData(int enrollmentId, EnrollmentDto enrollmentDto) {
+    public String updateEnrollmentData(int enrollmentId, EnrollmentDto enrollmentDto) {
         Enrollment enrollment = enrollmentRepo.findById(enrollmentId).orElseThrow(() -> new EnrollmentNotFoundException("Enrollment not found!"));
         if (enrollmentDto.getStudentId() != 0) {
             int studentId = enrollmentDto.getStudentId();
@@ -94,13 +89,13 @@ public class EnrollmentService {
             enrollment.setEnrollmentGrade(enrollmentDto.getEnrollmentGrade());
         }
         enrollmentRepo.save(enrollment);
-        return new ResponseEntity<>("Enrollment data updated successfully!", HttpStatus.OK);
+        return "Enrollment data updated successfully!";
     }
 
 
-    public ResponseEntity<String> deleteEnrollmentData(int enrollmentId){
+    public String deleteEnrollmentData(int enrollmentId){
         Enrollment enrollment = enrollmentRepo.findById(enrollmentId).orElseThrow(()->new EnrollmentNotFoundException("Enrollment not found!"));
         enrollmentRepo.deleteById(enrollmentId);
-        return new ResponseEntity<>("Enrollment data deleted successfully!",HttpStatus.NO_CONTENT);
+        return "Enrollment data deleted successfully!";
     }
 }

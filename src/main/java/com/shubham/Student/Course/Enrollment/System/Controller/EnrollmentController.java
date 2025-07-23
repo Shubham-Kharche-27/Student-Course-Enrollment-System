@@ -4,6 +4,7 @@ import com.shubham.Student.Course.Enrollment.System.Dto.EnrollmentDto;
 import com.shubham.Student.Course.Enrollment.System.Service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,26 +21,26 @@ public class EnrollmentController {
             @RequestParam(value = "pageSize",defaultValue = "3")int pageSize,
             @RequestParam(defaultValue = "enrollmentId")String sortBy
     ){
-        return enrollmentService.getAllEnrollmentData(pageNum-1,pageSize,sortBy);
+        return new ResponseEntity<>(enrollmentService.getAllEnrollmentData(pageNum-1,pageSize,sortBy), HttpStatus.OK);
     }
 
     @GetMapping("/get/byId/{enrollmentId}")
     public ResponseEntity<EnrollmentDto> getEnrollmentById(@PathVariable int enrollmentId){
-        return enrollmentService.getEnrollmentDataById(enrollmentId);
+        return new ResponseEntity<>(enrollmentService.getEnrollmentDataById(enrollmentId),HttpStatus.OK);
     }
 
     @PostMapping("/post")
-    public ResponseEntity<String> createEnrollment(@RequestBody EnrollmentDto enrollmentDto){
-        return enrollmentService.createEnrollmentData(enrollmentDto);
+    public ResponseEntity<EnrollmentDto> createEnrollment(@RequestBody EnrollmentDto enrollmentDto){
+        return new ResponseEntity<>(enrollmentService.createEnrollmentData(enrollmentDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/put/{enrollmentId}")
     public ResponseEntity<String> updateEnrollment(@PathVariable int enrollmentId,@RequestBody EnrollmentDto enrollmentDto){
-        return enrollmentService.updateEnrollmentData(enrollmentId,enrollmentDto);
+        return new ResponseEntity<>(enrollmentService.updateEnrollmentData(enrollmentId,enrollmentDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{enrollmentId}")
     public ResponseEntity<String> deleteEnrollment(@PathVariable int enrollmentId){
-        return enrollmentService.deleteEnrollmentData(enrollmentId);
+        return new ResponseEntity<>(enrollmentService.deleteEnrollmentData(enrollmentId),HttpStatus.NO_CONTENT);
     }
 }
