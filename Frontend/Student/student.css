@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+body{
+    font-family: ubuntu;
+}
+.navbar-container{
+    background-color: #fff;
+    padding: 0.6em;
+    border-bottom: 2px solid #ddd;
+}
+.header-name{
+    margin-top: 0.2em;
+}
+.header-name i{
+    margin-top: 0.25em;
+    margin-right: 0.5em;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.header-name{
+    display: flex;
+    font-size: x-large;
+}
+
+.nav-list{
+    display: flex;
+    font-size: large;
+}
+.nav-list a{
+    padding: 0.5em 1em;
+    margin-right: 0.7em;
+    border-radius: 0.6em;
+    transition: 400ms ease;
+}
+.nav-link:hover{
+    background-color: #eee;
+    border-radius: 0.6em;
+}
+.nav-list a:hover small{
+    color: black;
+    background-color: #fff;
+}
+.dashboard{
+    pointer-events: none;
+}
+.nav-num{
+    background-color: #eee;
+    padding: 0.1em 0.5em;
+    margin-left: 1em;
+    border-radius: 0.3em;
+}
+.nav-list a i{
+    margin-right: 1em;
+}
