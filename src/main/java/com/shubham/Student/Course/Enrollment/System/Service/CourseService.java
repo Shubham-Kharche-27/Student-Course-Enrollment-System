@@ -57,4 +57,8 @@ public class CourseService {
         courseRepo.deleteById(courseId);
         return "Course data deleted successfully!";
     }
+
+    public Long getCountOfCourses(){
+        return courseRepo.count();
+    }
 }

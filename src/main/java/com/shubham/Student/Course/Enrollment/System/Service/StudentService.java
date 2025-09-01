@@ -60,4 +60,8 @@ public class StudentService {
         studentRepo.deleteById(studentId);
         return "Student data deleted successfully!";
     }
+
+    public Long getCountOfStudents(){
+        return studentRepo.count();
+    }
 }

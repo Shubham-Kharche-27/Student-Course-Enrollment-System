@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/course")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class CourseController {
 
     @Autowired
@@ -42,5 +43,10 @@ public class CourseController {
     @DeleteMapping("/delete/{courseId}")
     public ResponseEntity<String> deleteCourse(@PathVariable int courseId){
         return new ResponseEntity<>(courseService.deleteCourseData(courseId),HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getCountOfCourse(){
+        return new ResponseEntity<>(courseService.getCountOfCourses(),HttpStatus.OK);
     }
 }

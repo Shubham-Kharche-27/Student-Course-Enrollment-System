@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/student")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class StudentController {
 
     @Autowired
@@ -42,5 +43,10 @@ public class StudentController {
     @DeleteMapping("/delete/{studentId}")
     public ResponseEntity<String> deleteStudent(@PathVariable int studentId){
         return new ResponseEntity<>(studentService.deleteStudentData(studentId),HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getCountOfStudents(){
+        return new ResponseEntity<>(studentService.getCountOfStudents(),HttpStatus.OK);
     }
 }

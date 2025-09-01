@@ -8,8 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/enrollment")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class EnrollmentController {
 
     @Autowired
@@ -42,5 +45,15 @@ public class EnrollmentController {
     @DeleteMapping("/delete/{enrollmentId}")
     public ResponseEntity<String> deleteEnrollment(@PathVariable int enrollmentId){
         return new ResponseEntity<>(enrollmentService.deleteEnrollmentData(enrollmentId),HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getCountOfEnrollments(){
+        return new ResponseEntity<>(enrollmentService.getCountOfEnrollment(),HttpStatus.OK);
+    }
+
+    @GetMapping("/recent")
+    public ResponseEntity<List<EnrollmentDto>> getRecentEnrollments(){
+        return new ResponseEntity<>(enrollmentService.getRecentEnrollmentData(),HttpStatus.OK);
     }
 }

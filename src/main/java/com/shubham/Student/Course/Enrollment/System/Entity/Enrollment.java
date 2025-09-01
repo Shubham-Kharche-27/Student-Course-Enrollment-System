@@ -1,6 +1,7 @@
 package com.shubham.Student.Course.Enrollment.System.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.shubham.Student.Course.Enrollment.System.Entity.Enums.EnrollmentStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -10,19 +11,27 @@ public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int enrollmentId;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "studentId")
     @JsonBackReference(value = "studentEnrollment")
     private Student student;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "courseId")
     @JsonBackReference(value = "courseEnrollment")
     private Course course;
+    @Column(columnDefinition = "DATE")
     private LocalDate enrollmentDate;
-    private String enrollmentStatus;
+
+    @Enumerated(EnumType.STRING)
+    private EnrollmentStatus enrollmentStatus;
     private String enrollmentGrade;
 
-    public Enrollment(int enrollmentId, Student student, Course course, LocalDate enrollmentDate, String enrollmentStatus, String enrollmentGrade) {
+    @PrePersist
+    public void setEnrollmentDate(){
+        enrollmentDate = LocalDate.now();
+    }
+
+    public Enrollment(int enrollmentId, Student student, Course course, LocalDate enrollmentDate, EnrollmentStatus enrollmentStatus, String enrollmentGrade) {
         this.enrollmentId = enrollmentId;
         this.student = student;
         this.course = course;
@@ -66,11 +75,11 @@ public class Enrollment {
         this.enrollmentDate = enrollmentDate;
     }
 
-    public String getEnrollmentStatus() {
+    public EnrollmentStatus getEnrollmentStatus() {
         return enrollmentStatus;
     }
 
-    public void setEnrollmentStatus(String enrollmentStatus) {
+    public void setEnrollmentStatus(EnrollmentStatus enrollmentStatus) {
         this.enrollmentStatus = enrollmentStatus;
     }
 
