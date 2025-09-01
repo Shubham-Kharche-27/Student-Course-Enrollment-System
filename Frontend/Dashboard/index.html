@@ -5,25 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <title>EduManage</title>
 </head>
 <body>
     <div class="navbar-container">
         <nav class="navbar mx-20">
-            <div class="header">
+            <div class="header-name">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <h1>EduManage</h1>
             </div>
             <div class="nav-list">
                 <a href="#" class="text-white bg-black"><i class="fa-solid fa-house"></i>Dashboard</a>
-                <a href="#"><i class="fa-solid fa-users"></i>Students<small class="nav-num">3</small></a>
-                <a href="#"><i class="fa-solid fa-book-open"></i>Courses<small class="nav-num">3</small></a>
-                <a href="#"><i class="fa-solid fa-user-check"></i>Enrollments<small class="nav-num">3</small></a>
+                <a href="/Frontend/Student/student.html" class="nav-link"><i class="fa-solid fa-users"></i>Students<small class="nav-num total-stu">0</small></a>
+                <a href="#" class="nav-link"><i class="fa-solid fa-book-open"></i>Courses<small class="nav-num total-crs">0</small></a>
+                <a href="#" class="nav-link"><i class="fa-solid fa-user-check"></i>Enrollments<small class="nav-num total-enroll">0</small></a>
                 <img class="w-9 h-9 mt-1 border-2 bg-gray-200 rounded-md p-1 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/6714/6714978.png" alt="">
             </div>
         </nav>
     </div>
 
+    <div class="header mx-20 mt-3">
+        <div class="header-section">
+            <h1 class="text-3xl">Dashboard</h1>
+            <p class="text-base text-gray-600">Welcome to EduManage - Student Course Enrollment System</p>
+        </div>
+        <div class="header-buttons">
+            <button type="button" class="header-btn1 bg-black text-white mr-2"><i class="fa-regular fa-plus"></i>Add Student</button>
+            <button type="button" class="header-btn2 border-2"><i class="fa-regular fa-plus"></i>Add Course</button>
+        </div>
+    </div>
+
+    <div class="container1 mx-20 p-4 mt-1">
+        <div class="sub-container mr-3">
+            <p>Total Students <span><i class="fa-solid fa-users bg-blue-500 p-2 rounded-md text-white"></i></span></p>
+            <div class="count">
+                <h2 class="text-3xl total-stu">0</h2>
+                <p class="text-gray-600">Registered students</p>
+            </div>
+        </div>
+        <div class="sub-container mx-3">
+            <p>Available Courses <span><i class="fa-solid fa-book-open bg-green-500 p-2 rounded-md text-white"></i></span></p>
+            <div class="count">
+                <h2 class="text-3xl total-crs">0</h2>
+                <p class="text-gray-600">Active courses</p>
+            </div>
+        </div>
+        <div class="sub-container ml-3">
+            <p>Total Enrollments <span><i class="fa-solid fa-user-check bg-purple-500 p-2 rounded-md text-white"></i></span></p>
+            <div class="count">
+                <h2 class="text-3xl total-enroll">0</h2>
+                <p class="text-gray-600">Student Enrollments</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container2 mx-24 p-7 mt-4">
+        <div>
+            <i class="fa-solid fa-arrow-trend-up mr-3"></i>
+            <small class="text-xl">Recent Enrollment</small>
+        </div>
+        <p class="text-base text-gray-600">Latest student course enrollments</p>
+        <div class="enroll-section my-5"></div>
+        <button type="button">View All Enrollments</button>
+    </div>
+
+    <div class="container3 mx-24 p-7 mt-8">
+        <i class="fa-solid fa-bolt-lightning"></i>
+        <strong class="text-xl ml-3">Quick Actions</strong>
+        <p class="text-gray-600">Common tasks and shortcuts</p>
+        <div class="quick-buttons">
+            <button type="button"><i class="fa-solid fa-users ml-3 mr-5"></i>Manage Students</button>
+            <button type="button"><i class="fa-solid fa-book-open ml-3 mr-5"></i>Manage Courses</button>
+            <button type="button"><i class="fa-solid fa-user-check ml-3 mr-5"></i>Manage Enrollments</button>
+            <button type="button"><i class="fa-solid fa-calendar ml-3 mr-5"></i>Enroll Student in Course</button>
+        </div>
+    </div>
+
+    <div class="container4 mx-24 p-7 mt-7">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+        <div class="sub-container4 ml-6 text-blue-900">
+            <strong>Welcometo EduManage!</strong>
+            <p>Efficiently manage students, courses and enrollments all in one place. Get started by adding students and courses then create enrollment to connect them.</p>
+        </div>
+    </div>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="app.js"></script>
 </body>

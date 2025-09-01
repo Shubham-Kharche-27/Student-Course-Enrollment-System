@@ -1,16 +1,23 @@
 *{
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
+}
+body{
+    font-family: ubuntu;
+}
+body::-webkit-scrollbar{
+    display: none;
 }
 .navbar-container{
     background-color: #fff;
     padding: 0.6em;
     border-bottom: 2px solid #ddd;
 }
-.header{
+.header-name{
     margin-top: 0.2em;
 }
-.header i{
+.header-name i{
     margin-top: 0.25em;
     margin-right: 0.5em;
 }
@@ -18,7 +25,7 @@
     display: flex;
     justify-content: space-between;
 }
-.header{
+.header-name{
     display: flex;
     font-size: x-large;
 }
@@ -31,22 +38,189 @@
     padding: 0.5em 1em;
     margin-right: 0.7em;
     border-radius: 0.6em;
+    transition: 400ms ease;
 }
-.nav-list a:hover{
-    background-color: black;
-    color: white;
+.nav-link:hover{
+    background-color: #eee;
     border-radius: 0.6em;
 }
 .nav-list a:hover small{
     color: black;
-    background-color: #eee;
+    background-color: #fff;
 }
 .nav-num{
     background-color: #eee;
     padding: 0.1em 0.5em;
     margin-left: 1em;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
 }
 .nav-list a i{
     margin-right: 1em;
+}
+
+
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+.header-buttons{
+    font-size: 1em;
+    margin-top: 0.6em;
+}
+.header-buttons button{
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    transition: 400ms ease;
+}
+.header-buttons button i{
+    margin-right: 1em;
+}
+.header-btn2:hover{
+    background-color: #eee;
+}
+
+
+
+.container1{
+    display: flex;
+    width: 86em;
+}
+.sub-container{
+    width: 100%;
+    padding: 2em;
+    
+    border: 1px solid #ddd;
+    border-radius: 1.5em;
+    cursor: pointer;
+    transition: 200ms ease;
+}
+.sub-container:hover{
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+.sub-container p span{
+    float: right;
+}
+.count{
+    margin-top: 2em;
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 1.5em;
+}
+.container2 button{
+    border: 1px solid #ddd;
+    padding: 0.3em;
+    border-radius: 0.5em;
+    transition: 400ms ease;
+}
+
+.container2 button:hover{
+    background-color: #eee;
+}
+
+:root{
+    --enrollColor1green:rgba(192, 255, 192,0.6);
+    --enrollColor2green:darkgreen;
+    --enrollColor1red:rgba(255, 167, 167, 0.3);
+    --enrollColor2red:rgb(178, 0, 0);
+    --enrollColor1yellow:rgba(255, 244, 149, 0.5);
+    --enrollColor2yellow:rgb(158, 158, 0);
+    --enrollColor1blue:rgba(149, 172, 255, 0.5);
+    --enrollColor2blue:darkblue;
+    --enrollColor1orange:rgba(255, 214, 149, 0.5);
+    --enrollColor2orange:rgb(188, 122, 0);
+}
+
+.enroll-data{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 0.7em;
+    margin-top: 1em;
+    cursor: pointer;
+}
+.enroll-data-child{
+    margin-top: 0.8em;
+    overflow: hidden;
+}
+.enroll-para{
+    font-size: 0.8em;
+    color: gray;
+}
+.status{
+    padding: 0.4em 0.8em;
+    font-size: 0.9em;
+    border-radius: 0.4em;
+    margin-right: 0.7em;
+}
+.date{
+    font-size: 0.9em;
+    overflow: hidden;
+}
+
+.green{
+    background-color: var(--enrollColor1green);
+    color: var(--enrollColor2green);
+}
+.red{
+    background-color: var(--enrollColor1red);
+    color: var(--enrollColor2red);  
+}
+.yellow{
+    background-color: var(--enrollColor1yellow);
+    color: var(--enrollColor2yellow);
+}
+.blue{
+    background-color: var(--enrollColor1blue);
+    color: var(--enrollColor2blue);
+}
+.orange{
+    background-color: var(--enrollColor1orange);
+    color: var(--enrollColor2orange);
+}
+
+
+
+.container3{
+    border: 1px solid #ddd;
+    border-radius: 1.5em;
+}
+.quick-buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+    gap: 1.2em;
+}
+.quick-buttons button{
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    width: 100%;
+    text-align: left;
+    border-radius: 0.6em;
+    transition: 400ms ease;
+}
+.quick-buttons button:hover{
+    background-color: #eee;
+}
+
+.container4{
+    display: flex;
+    border: 1px solid lightblue;
+    border-radius: 1em;
+    background-color: rgba(200, 253, 255, 0.334);
+}
+.container4 i{
+    background-color: black;
+    color: white;
+    align-content: center;
+    width: fit-content;
+    padding: 0px 0.7em;
+    font-size: 1.4em;
+    border-radius: 0.5em;
 }
