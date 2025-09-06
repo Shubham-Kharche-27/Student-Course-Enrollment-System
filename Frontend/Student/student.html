@@ -24,6 +24,191 @@
             </div>
         </nav>
     </div>
+
+    <div class="student-header mx-24 mt-8">
+        <div>
+            <h1 class="text-3xl">Students</h1>
+            <p class="text-gray-500">Manage student all student records</p>
+        </div>
+        <div class="stu-btn">
+            <button type="button" class="add-student"><i class="fa-regular fa-plus mr-5"></i><span>Add Student</span></button>
+        </div>
+    </div>
+
+    <div class="container1 mx-20 mt-10">
+        <div class="search-stu">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search students..."class="search" onkeyup="liveSearch()">
+        </div>
+        <div>
+            <p class="student-count-para mr-7">Total - 0</p>
+        </div>
+    </div>
+
+    <div class="container2 mx-24 mt-10 p-8">
+        <div>
+            <strong class="text-xl">Student Directory</strong>
+            <p class="text-gray-500">View and manage all students records</p>
+        </div>
+        <div class="stu-record-table mt-10">
+            <table class="record-table">
+                <tr class="head-row">
+                    <th>Student</th>
+                    <th>Contact</th>
+                    <th>Gender</th>
+                    <th>Date of Birth</th>
+                    <th>Status</th>
+                    <th class="action-end">Actions</th>
+                </tr>
+                <tr class="stu-row">
+                    <td class="stu-name">
+                        <div>
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <div>
+                            <strong>Emma Johnson</strong>
+                            <p class="stu-gray">ID - 1</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div><i class="fa-regular fa-envelope icon-contact"></i> <strong>emma@gmail.com</strong></div>
+                        <div><i class="fa-solid fa-phone stu-gray icon-contact"></i> +1 155553 123-4567</div>
+                    </td>
+                    <td>
+                        <div><i class="fa-solid fa-venus icon-contact"></i> <strong>Female</strong></div>
+                    </td>
+                    <td>
+                        <div><i class="fa-solid fa-calendar icon-contact"></i> <strong>15/1/2024</strong></div>
+                    </td>
+                    <td>
+                        <p id="para-status"><span class="green status">active</span></p>
+                    </td>
+                    <td class="action-end">
+                        <i class="fa-regular fa-pen-to-square edit-stu"></i>
+                        <i class="fa-regular fa-trash-can delete-stu"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="container4">
+        <div class="form-container">
+            <strong>Add New Student</strong>
+            <p>Enter Student information below</p>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Shubham Kharche">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="shubham@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">phone</label>
+                    <input type="number" name="phone" id="phone" placeholder="+91 123456789">
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div>
+                            <label for="dob">Gender</label>
+                            <br>
+                            <Select id="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Transgender">Transgender</option>
+                            </Select>
+                        </div>
+                        <div>
+                            <label for="dob">Date of Birth</label>
+                            <br>
+                            <input type="date" name="dob" id="dob">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <Select id="status">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Graduated">Graduated</option>
+                    </Select>
+                </div>
+            </form>
+            <div class="button-container">
+                <button type="button" id="cancel-btn">Cancel</button>
+                <button type="button" id="add-btn">Add Student</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container5">
+        <i id="card-icon" class="fa-solid fa-circle-check"></i>
+        <strong id="card-text">Student Added Successfully</strong>
+    </div>
+
+    <div class="container6">
+        <div class="form-container">
+            <strong>Edit Student</strong>
+            <p>Update student information below</p>
+            <form>
+                <div class="form-group">
+                    <label for="updateName">Name</label>
+                    <input type="text" name="name" id="updateName" placeholder="Shubham Kharche">
+                </div>
+                <div class="form-group">
+                    <label for="updateEmail">Email</label>
+                    <input type="email" id="updateEmail" placeholder="shubham@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="updatePhone">phone</label>
+                    <input type="number" id="updatePhone" placeholder="+91 123456789">
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div>
+                            <label for="updateGender">Gender</label>
+                            <br>
+                            <Select id="updateGender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Transgender">Transgender</option>
+                            </Select>
+                        </div>
+                        <div>
+                            <label for="updateDob">Date of Birth</label>
+                            <br>
+                            <input type="date" name="dob" id="updateDob">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="updateStatus">Status</label>
+                    <Select id="updateStatus">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Graduated">Graduated</option>
+                    </Select>
+                </div>
+            </form>
+            <div class="button-container">
+                <button type="button" id="cancel-edit-btn">Cancel</button>
+                <button type="button" id="update-btn">Update Student</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container7">
+        <div class="delete-container">
+            <h1><strong>Delete Student</strong></h1>
+            <p>Are you sure you want to delete Emma Jhonson? This action cannot be undone and will also remove all associated enrollments.</p>
+            <div class="dlt-con">
+                <button type="button" id="dlt-cancel-btn">Cancel</button>
+                <button type="button" id="dlt-btn">Delete</button>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="student.js"></script>
 </body>
