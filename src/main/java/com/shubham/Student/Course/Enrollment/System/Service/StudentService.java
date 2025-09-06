@@ -12,6 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class StudentService {
 
@@ -25,6 +28,15 @@ public class StudentService {
         Pageable pageable = PageRequest.of(pageNum,pageSize, Sort.by(sortBy));
         Page<Student> studentPage = studentRepo.findAll(pageable);
         return studentPage.map(Student->modelMapper.map(Student,StudentDto.class));
+    }
+
+    public List<StudentDto> getAllStudentData(){
+        List<Student> studentList = studentRepo.findAll();
+        List<StudentDto> dto = new ArrayList<>();
+        for(Student student : studentList){
+            dto.add(modelMapper.map(student, StudentDto.class));
+        }
+        return dto;
     }
 
     public StudentDto getStudentDataById(int studentId){
@@ -45,11 +57,17 @@ public class StudentService {
         if(studentDto.getStudentEmail()!=null){
             student.setStudentEmail(studentDto.getStudentEmail());
         }
+        if(studentDto.getPhoneNum()!=null){
+            student.setPhoneNum(studentDto.getPhoneNum());
+        }
         if(studentDto.getStudentDob()!=null){
             student.setStudentDob(studentDto.getStudentDob());
         }
         if(studentDto.getStudentGender()!=null){
             student.setStudentGender(studentDto.getStudentGender());
+        }
+        if(studentDto.getStudentStatus()!=null){
+            student.setStudentStatus(studentDto.getStudentStatus());
         }
         studentRepo.save(student);
         return "Student data updated successfully!";
@@ -63,5 +81,16 @@ public class StudentService {
 
     public Long getCountOfStudents(){
         return studentRepo.count();
+    }
+
+    public List<StudentDto> searchByName(String name){
+        List<Student> studentList = studentRepo.findByStudentNameContainingIgnoreCase(name);
+        List<StudentDto> dtoList = new ArrayList<>();
+
+        for(Student student : studentList){
+            StudentDto dto = modelMapper.map(student, StudentDto.class);
+            dtoList.add(dto);
+        }
+        return dtoList;
     }
 }

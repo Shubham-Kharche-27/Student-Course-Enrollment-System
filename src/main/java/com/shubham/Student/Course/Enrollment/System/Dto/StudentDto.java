@@ -1,6 +1,10 @@
 package com.shubham.Student.Course.Enrollment.System.Dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.shubham.Student.Course.Enrollment.System.Entity.Enums.StudentGender;
+import com.shubham.Student.Course.Enrollment.System.Entity.Enums.StudentStatus;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +14,20 @@ public class StudentDto {
     private int studentId;
     private String studentName;
     private String studentEmail;
+    private String phoneNum;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
     private LocalDate studentDob;
-    private String studentGender;
+    private StudentGender studentGender;
+    private StudentStatus studentStatus;
     List<EnrollmentDto> list = new ArrayList<>();
+
+    public StudentStatus getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(StudentStatus studentStatus) {
+        this.studentStatus = studentStatus;
+    }
 
     public int getStudentId() {
         return studentId;
@@ -46,11 +61,11 @@ public class StudentDto {
         this.studentDob = studentDob;
     }
 
-    public String getStudentGender() {
+    public StudentGender getStudentGender() {
         return studentGender;
     }
 
-    public void setStudentGender(String studentGender) {
+    public void setStudentGender(StudentGender studentGender) {
         this.studentGender = studentGender;
     }
 
@@ -60,5 +75,13 @@ public class StudentDto {
 
     public void setList(List<EnrollmentDto> list) {
         this.list = list;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 }

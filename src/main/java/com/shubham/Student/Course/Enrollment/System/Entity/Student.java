@@ -1,6 +1,8 @@
 package com.shubham.Student.Course.Enrollment.System.Entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.shubham.Student.Course.Enrollment.System.Entity.Enums.StudentGender;
+import com.shubham.Student.Course.Enrollment.System.Entity.Enums.StudentStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -14,18 +16,25 @@ public class Student {
     private int studentId;
     private String studentName;
     private String studentEmail;
+    private String phoneNum;
     private LocalDate studentDob;
-    private String studentGender;
+    @Enumerated(EnumType.STRING)
+    private StudentGender studentGender;
+
+    @Enumerated(EnumType.STRING)
+    private StudentStatus studentStatus;
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonManagedReference(value = "studentEnrollment")
     List<Enrollment> studentList = new ArrayList<>();
 
-    public Student(int studentId, String studentName, String studentEmail, LocalDate studentDob, String studentGender, List<Enrollment> list) {
+    public Student(int studentId, String studentName, String studentEmail,String phoneNum, LocalDate studentDob, StudentGender studentGender,StudentStatus studentStatus, List<Enrollment> list) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.studentEmail = studentEmail;
+        this.phoneNum = phoneNum;
         this.studentDob = studentDob;
         this.studentGender = studentGender;
+        this.studentStatus = studentStatus;
         this.studentList = list;
     }
 
@@ -64,11 +73,11 @@ public class Student {
         this.studentDob = studentDob;
     }
 
-    public String getStudentGender() {
+    public StudentGender getStudentGender() {
         return studentGender;
     }
 
-    public void setStudentGender(String studentGender) {
+    public void setStudentGender(StudentGender studentGender) {
         this.studentGender = studentGender;
     }
 
@@ -76,7 +85,23 @@ public class Student {
         return studentList;
     }
 
+    public StudentStatus getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(StudentStatus studentStatus) {
+        this.studentStatus = studentStatus;
+    }
+
     public void setStudentList(List<Enrollment> studentList) {
         this.studentList = studentList;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 }
