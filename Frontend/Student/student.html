@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="student.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    <title>EduManage</title>
+    <title>EduManage | Students</title>
 </head>
 <body>
     <div class="navbar-container">
@@ -18,7 +18,7 @@
             <div class="nav-list">
                 <a href="../Dashboard/index.html" class="nav-link"><i class="fa-solid fa-house"></i>Dashboard</a>
                 <a href="#" class="text-white bg-black"><i class="fa-solid fa-users"></i>Students<small class="nav-num total-stu text-black bg-white">0</small></a>
-                <a href="#" class="nav-link"><i class="fa-solid fa-book-open"></i>Courses<small class="nav-num total-crs">0</small></a>
+                <a href="../Course/course.html" class="nav-link"><i class="fa-solid fa-book-open"></i>Courses<small class="nav-num total-crs">0</small></a>
                 <a href="#" class="nav-link"><i class="fa-solid fa-user-check"></i>Enrollments<small class="nav-num total-enroll">0</small></a>
                 <img class="w-9 h-9 mt-1 border-2 bg-gray-200 rounded-md p-1 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/6714/6714978.png" alt="">
             </div>
@@ -51,44 +51,7 @@
             <p class="text-gray-500">View and manage all students records</p>
         </div>
         <div class="stu-record-table mt-10">
-            <table class="record-table">
-                <tr class="head-row">
-                    <th>Student</th>
-                    <th>Contact</th>
-                    <th>Gender</th>
-                    <th>Date of Birth</th>
-                    <th>Status</th>
-                    <th class="action-end">Actions</th>
-                </tr>
-                <tr class="stu-row">
-                    <td class="stu-name">
-                        <div>
-                            <i class="fa-regular fa-user"></i>
-                        </div>
-                        <div>
-                            <strong>Emma Johnson</strong>
-                            <p class="stu-gray">ID - 1</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div><i class="fa-regular fa-envelope icon-contact"></i> <strong>emma@gmail.com</strong></div>
-                        <div><i class="fa-solid fa-phone stu-gray icon-contact"></i> +1 155553 123-4567</div>
-                    </td>
-                    <td>
-                        <div><i class="fa-solid fa-venus icon-contact"></i> <strong>Female</strong></div>
-                    </td>
-                    <td>
-                        <div><i class="fa-solid fa-calendar icon-contact"></i> <strong>15/1/2024</strong></div>
-                    </td>
-                    <td>
-                        <p id="para-status"><span class="green status">active</span></p>
-                    </td>
-                    <td class="action-end">
-                        <i class="fa-regular fa-pen-to-square edit-stu"></i>
-                        <i class="fa-regular fa-trash-can delete-stu"></i>
-                    </td>
-                </tr>
-            </table>
+            <table class="record-table"></table>
         </div>
     </div>
 
