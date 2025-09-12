@@ -12,6 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CourseService {
 
@@ -42,11 +45,32 @@ public class CourseService {
         if(courseDto.getCourseTitle()!=null){
             course.setCourseTitle(courseDto.getCourseTitle());
         }
+        if(courseDto.getCourseCode()!=null){
+            course.setCourseCode(courseDto.getCourseCode());
+        }
         if(courseDto.getCourseDescription()!=null){
             course.setCourseDescription(courseDto.getCourseDescription());
         }
         if(courseDto.getCourseDuration()!=null){
             course.setCourseDuration(courseDto.getCourseDuration());
+        }
+        if(courseDto.getCourseInstructor()!=null){
+            course.setCourseInstructor(courseDto.getCourseInstructor());
+        }
+        if(courseDto.getCourseCredit()!=null){
+            course.setCourseCredit(courseDto.getCourseCredit());
+        }
+        if(courseDto.getCoursePrice()!=null){
+            course.setCoursePrice(courseDto.getCoursePrice());
+        }
+        if(courseDto.getTotalEnrollment()!=null){
+            course.setTotalEnrollment(courseDto.getTotalEnrollment());
+        }
+        if(courseDto.getCourseStartDate()!=null){
+            course.setCourseStartDate(courseDto.getCourseStartDate());
+        }
+        if(courseDto.getCourseEndDate()!=null){
+            course.setCourseEndDate(courseDto.getCourseEndDate());
         }
         courseRepo.save(course);
         return "Course data updated successfully!";
@@ -60,5 +84,25 @@ public class CourseService {
 
     public Long getCountOfCourses(){
         return courseRepo.count();
+    }
+
+    public List<CourseDto> searchByName(String name){
+        List<Course> courseList = courseRepo.findByCourseTitleContainingIgnoreCase(name);
+        List<CourseDto> dto = new ArrayList<>();
+
+        for(Course course:courseList){
+            dto.add(modelMapper.map(course,CourseDto.class));
+        }
+        return dto;
+    }
+
+    public List<CourseDto> findAllCourses(){
+        List<Course> courseList = courseRepo.findAll();
+        List<CourseDto> dto = new ArrayList<>();
+
+        for(Course course:courseList){
+            dto.add(modelMapper.map(course,CourseDto.class));
+        }
+        return dto;
     }
 }

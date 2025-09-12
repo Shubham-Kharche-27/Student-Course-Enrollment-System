@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/course")
 @CrossOrigin(origins = "http://127.0.0.1:5500")
@@ -48,5 +50,15 @@ public class CourseController {
     @GetMapping("/count")
     public ResponseEntity<Long> getCountOfCourse(){
         return new ResponseEntity<>(courseService.getCountOfCourses(),HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<CourseDto>> liveSearch(@RequestParam(required = false) String name){
+        return new ResponseEntity<>(courseService.searchByName(name),HttpStatus.OK);
+    }
+
+    @GetMapping("/get/all")
+    public ResponseEntity<List<CourseDto>> findAllCourse(){
+        return new ResponseEntity<>(courseService.findAllCourses(),HttpStatus.OK);
     }
 }
