@@ -3,6 +3,9 @@
     margin: 0;
     overflow-x: hidden;
 }
+::-webkit-scrollbar{
+    display: none;
+}
 body{
     font-family: ubuntu;
 }
@@ -58,11 +61,11 @@ body{
     margin-right: 1em;
 }
 
-.student-header{
+.course-header{
     display: flex;
     justify-content: space-between;
 }
-.stu-btn button{
+.crs-btn button{
     padding: 0.5em 1.5em;
     background-color: black;
     color: white;
@@ -70,7 +73,7 @@ body{
     margin-top: 0.6em;
 }
 
-.stu-btn button i{
+.crs-btn button i{
     position: relative;
     top: 0.2em;
 }
@@ -80,16 +83,316 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.search-stu i{
+.search-crs i{
     position: relative;
     left: 2.5em;
     top: 0.2em;
     color: gray;
 }
-.search-stu input{
+.search-crs input{
     width: 30em;
     border: 1px solid #ddd;
     padding: 0.5em 3em;
     background-color: #eeeeee99;
     border-radius: 0.5em;
+}
+
+
+.container2{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+}
+.card{
+    border: 1px solid #ddd;
+    padding: 1.5em;
+    border-radius: 1.5em;
+    line-height: 2em;
+}
+.card:hover{
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+.icon-badge-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}
+.book-icon {
+    background-color: #83E44C;
+    padding: 0.5em;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.badge{
+    background: #eee;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+.edit-course{
+    background-color: rgb(91, 173, 255);
+    color: white;
+    padding: 0.7em 0.7em;
+    margin-right: 0.5em;
+    border-radius: 0.5em;
+    margin-top: 0.5em;
+    cursor: pointer;
+}
+.edit-course:hover{
+    background-color: rgb(84, 162, 240);
+}
+.delete-course{
+    background-color: rgb(255, 85, 85);
+    color: white;
+    padding: 0.7em 0.7em;
+    border-radius: 0.5em;
+    margin-top: 0.5em;
+    cursor: pointer;
+}
+.delete-course:hover{
+    background-color: rgb(247, 80, 80);
+}
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.progress {
+    background: #e5e5e5;
+    height: 6px;
+    border-radius: 6px;
+    margin: 6px 0 14px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #000;
+    border-radius: 6px;
+}
+
+.date {
+    font-size: 13px;
+    margin: 2px 0;
+}
+
+.tag.available {
+    background: #e8f7ff;
+    color: #007acc;
+}
+.card-icon{
+    position: relative;
+    top: 0.1em;
+    margin-right: 0.2em;
+}
+
+
+.container3{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    display: none;
+}
+
+.create-form{
+    width: 50%;
+    height: 95%;
+    background-color: white;
+    padding: 2.5em;
+    border-radius: 1.5em;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+.row-item{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1em;
+}
+.row-item input{
+    background-color: #eeeeeed3;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+}
+.row-item textarea{
+    background-color: #eeeeeed3;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border-radius: 0.3em;
+}
+.btn-row{
+    float: right;
+    margin-top: 2em;
+}
+.btn-row button{
+    border: 1px solid black;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+}
+#add-btn{
+    background-color: black;
+    color: white;
+}
+#cancel-btn{
+    background-color: white;
+    margin-right: 0.3em;
+}
+#cancel-btn:hover{
+    background-color: #eee;
+}
+
+
+
+.container4{
+    position: fixed;
+    top: 3em;
+    right: -0.5em;
+    padding: 1em 15em 1em 1em;
+    border-radius: 0.5em;
+    z-index: 1000;
+    animation: slide 1s ease;
+    display: none;
+}
+.container4 i{
+    position: relative;
+    top: 0.2em;
+    right: 0.3em;
+}
+.container4.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+.container4-back{
+    animation: fadeOut 1s ease;
+}
+.crs-success{
+    background-color: rgb(17, 40, 27);
+    color: rgb(111, 255, 176);
+}
+.crs-fail{
+    background-color: rgb(40, 17, 17);
+    color: rgb(255, 111, 111);
+}
+@keyframes slide{
+    from{
+        transform: translateX(100%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fadeOut{
+    to{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+
+.container5{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    display: none;
+}
+
+#add-update-btn{
+    background-color: black;
+    color: white;
+}
+#cancel-update-btn{
+    margin-right: 0.3em;
+}
+
+
+.container6{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    display: none;
+}
+.delete-container{
+    background-color: white;
+    padding: 2em;
+    width: 50%;
+    border-radius: 1em;
+}
+.delete-container h1{
+    font-size: x-large;
+}
+.delete-container p{
+    margin-top: 1em;
+    color: gray;
+}
+.dlt-con{
+    float: right;
+    margin-top: 1em;
+}
+#dlt-cancel-btn{
+    border: 1px solid #ccc;
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+}
+#dlt-cancel-btn:hover{
+    background-color: #eee;
+}
+#dlt-btn{
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+    color: white;
+    background-color: rgb(255, 0, 21);
 }
