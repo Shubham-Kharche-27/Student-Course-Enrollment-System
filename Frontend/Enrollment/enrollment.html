@@ -10,7 +10,177 @@
 </head>
 <body>
     
-    
+    <div class="navbar-container">
+        <nav class="navbar mx-20">
+            <div class="header-name">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h1>EduManage</h1>
+            </div>
+            <div class="nav-list">
+                <a href="../Dashboard/index.html" class="nav-link"><i class="fa-solid fa-house"></i>Dashboard</a>
+                <a href="../Student/student.html" class="nav-link"><i class="fa-solid fa-users"></i>Students<small class="nav-num total-stu text-black bg-white">0</small></a>
+                <a href="../Course/course.html" class="nav-link"><i class="fa-solid fa-book-open"></i>Courses<small class="nav-num total-crs bg-white text-black">0</small></a>
+                <a href="#" class="text-white bg-black"><i class="fa-solid fa-user-check"></i>Enrollments<small class="nav-num total-enroll bg-white">0</small></a>
+                <img class="w-9 h-9 mt-1 border-2 bg-gray-200 rounded-md p-1 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/6714/6714978.png" alt="">
+            </div>
+        </nav>
+    </div>
+
+    <div class="enroll-header mx-24 mt-8">
+        <div>
+            <h1 class="text-3xl">Enrollments</h1>
+            <p class="text-gray-500">Manage students course enrollments</p>
+        </div>
+        <div class="enroll-btn">
+            <button type="button" class="add-enroll"><i class="fa-regular fa-plus mr-5"></i><span>Add Enrollment</span></button>
+        </div>
+    </div>
+
+    <div class="container1 mx-20 mt-10">
+        <div class="search-enroll">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search students..."class="search" onkeyup="liveSearch()">
+        </div>
+        <div>
+            <p class="enroll-count-para mr-7">Total - 0</p>
+        </div>
+    </div>
+
+    <div class="container2 mx-24 mt-10 p-8">
+        <div>
+            <strong class="text-xl">Enrollment Records</strong>
+            <p class="text-gray-500">View and manage all students course enrollments</p>
+        </div>
+        <div class="enroll-record-table mt-8">
+            <table class="record-table">
+                <tr class="head-row">
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Enrollment Date</th>
+                    <th>Status</th>
+                    <th>Grade</th>
+                    <th class="action-end">Actions</th>
+                </tr>
+                <tr class="row">
+                    <td class="row-item">
+                        <div><i class="fa-regular fa-user user-icon"></i></div>
+                        <div>
+                            <strong>Emma Jhonson</strong>
+                            <p class="enroll-grey">emma.jhonson@gmail.com</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row-item">
+                            <div><i class="fa-solid fa-book-open course-icon"></i></div>
+                            <div>
+                                <strong>Artificial Intelligence</strong>
+                                <p class="enroll-grey">CS101 - Ms.Jane Smith</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row-item">
+                            <div><i class="fa-solid fa-calendar calender-icon"></i></div>
+                            <div>
+                                <strong>1/15/2023</strong>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="row-item"><p class="green status">active</p></span>
+                    </td>
+                    <td >
+                        <span class="row-item"><p class="green status">A+</p></span>
+                    </td>
+                    <td class="action-end">
+                        <i class="fa-regular fa-pen-to-square edit-enroll"></i>
+                        <i class="fa-regular fa-trash-can delete-enroll"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="container3">
+        <div class="form-container">
+            <strong>Create New Enrollment</strong>
+            <p>Enter student and course for enrollment</p>
+            <form class="form-con">
+                <div class="form-row">
+                    <label for="student">Student</label>
+                    <input type="text" placeholder="Enter a student" id="student" onkeyup="liveStudent()">
+                    <div class="search-con"></div>
+                </div>
+                <div class="form-row">
+                    <label for="course">Course</label>
+                    <input type="text" placeholder="Enter a course" id="course" onkeyup="liveCourse()">
+                    <div class="search-crs"></div>
+                </div>
+                <div class="form-row">
+                    <label for="date">Status</label>
+                    <select name="status" id="status">
+                        <option value="Active">Active</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Dropped">Dropped</option>
+                        <option value="Suspended">Suspended</option>
+                    </select>
+                </div>
+            </form>
+            <div class="button-container">
+                <button type="button" id="cancel-btn">Cancel</button>
+                <button type="button" id="add-btn">Create Enrollment</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container4">
+        <i id="card-icon" class="fa-solid fa-circle-check"></i>
+        <strong id="card-text">Enrollment Added Successfully</strong>
+    </div>
+
+    <div class="container5">
+        <div class="form-container">
+            <strong>Update Enrollment</strong>
+            <p>Update enrollment information below</p>
+            <form class="form-con">
+                <div class="form-row">
+                    <label for="student">Student</label>
+                    <input type="text" placeholder="student" id="updateStudent" readonly>
+                    <div class="search-con"></div>
+                </div>
+                <div class="form-row">
+                    <label for="course">Course</label>
+                    <input type="text" placeholder="course" id="updateCourse" readonly>
+                    <div class="search-crs"></div>
+                </div>
+                <div class="form-row">
+                    <label for="status">Status</label>
+                    <select name="status" id="UpdateStatus">
+                        <option value="Active">Active</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Dropped">Dropped</option>
+                        <option value="Suspended">Suspended</option>
+                    </select>
+                </div>
+                <div class="form-row grade-form">
+                    <label for="grade">Grade</label>
+                    <select name="grade" id="grade">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="F">F</option>
+                    </select>
+                </div>
+            </form>
+            <div class="button-container">
+                <button type="button" id="update-cancel-btn">Cancel</button>
+                <button type="button" id="update-btn">Update Enrollment</button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="enrollment.js"></script>

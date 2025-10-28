@@ -56,4 +56,14 @@ public class EnrollmentController {
     public ResponseEntity<List<EnrollmentDto>> getRecentEnrollments(){
         return new ResponseEntity<>(enrollmentService.getRecentEnrollmentData(),HttpStatus.OK);
     }
+
+    @GetMapping("/get/all")
+    public ResponseEntity<List<EnrollmentDto>> getEnrollments(){
+        return new ResponseEntity<>(enrollmentService.getEnrollment(),HttpStatus.OK);
+    }
+
+    @GetMapping("/search/student")
+    public ResponseEntity<List<EnrollmentDto>> getEnrollmentLive(@RequestParam (required = false) String studentName){
+        return new ResponseEntity<>(enrollmentService.searchStudent(studentName),HttpStatus.OK);
+    }
 }

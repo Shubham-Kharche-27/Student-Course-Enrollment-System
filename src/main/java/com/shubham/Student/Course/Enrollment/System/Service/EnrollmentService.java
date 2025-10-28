@@ -1,6 +1,7 @@
 package com.shubham.Student.Course.Enrollment.System.Service;
 
 import com.shubham.Student.Course.Enrollment.System.Dto.EnrollmentDto;
+import com.shubham.Student.Course.Enrollment.System.Dto.StudentDto;
 import com.shubham.Student.Course.Enrollment.System.Entity.Course;
 import com.shubham.Student.Course.Enrollment.System.Entity.Enrollment;
 import com.shubham.Student.Course.Enrollment.System.Entity.Student;
@@ -66,19 +67,19 @@ public class EnrollmentService {
 
     public String updateEnrollmentData(int enrollmentId, EnrollmentDto enrollmentDto) {
         Enrollment enrollment = enrollmentRepo.findById(enrollmentId).orElseThrow(() -> new EnrollmentNotFoundException("Enrollment not found!"));
-        if (enrollmentDto.getStudentId() != 0) {
-            int studentId = enrollmentDto.getStudentId();
-            Student studentEntity = studentRepo.findById(studentId).orElseThrow(() -> new StudentNotFoundException("Student not found"));
-            enrollment.setStudent(studentEntity);
-            studentEntity.getStudentList().add(enrollment);
-        }
-        if (enrollmentDto.getCourseId() != 0) {
-            int courseId = enrollmentDto.getCourseId();
-            Course courseEntity = courseRepo.findById(courseId)
-                    .orElseThrow(() -> new CourseNotFoundException("Course not found"));
-            enrollment.setCourse(courseEntity);
-            courseEntity.getCourseList().add(enrollment);
-        }
+//        if (enrollmentDto.getStudentId() != 0) {
+//            int studentId = enrollmentDto.getStudentId();
+//            Student studentEntity = studentRepo.findById(studentId).orElseThrow(() -> new StudentNotFoundException("Student not found"));
+//            enrollment.setStudent(studentEntity);
+//            studentEntity.getStudentList().add(enrollment);
+//        }
+//        if (enrollmentDto.getCourseId() != 0) {
+//            int courseId = enrollmentDto.getCourseId();
+//            Course courseEntity = courseRepo.findById(courseId)
+//                    .orElseThrow(() -> new CourseNotFoundException("Course not found"));
+//            enrollment.setCourse(courseEntity);
+//            courseEntity.getCourseList().add(enrollment);
+//        }
         if (enrollmentDto.getEnrollmentStatus() != null) {
             enrollment.setEnrollmentStatus(enrollmentDto.getEnrollmentStatus());
         }
@@ -119,4 +120,52 @@ public class EnrollmentService {
         }
         return dtos;
     }
+
+    public List<EnrollmentDto> getEnrollment(){
+        List<Enrollment> enrollmentList = enrollmentRepo.findAll();
+        List<EnrollmentDto> dto = new ArrayList<>();
+
+        for(Enrollment enrollment : enrollmentList){
+            EnrollmentDto enrollmentDto = new EnrollmentDto();
+            enrollmentDto.setEnrollmentId(enrollment.getEnrollmentId());
+            enrollmentDto.setStudentId(enrollment.getStudent().getStudentId());
+            enrollmentDto.setStudentName(enrollment.getStudent().getStudentName());
+            enrollmentDto.setStudentEmail(enrollment.getStudent().getStudentEmail());
+            enrollmentDto.setEnrollmentDate(enrollment.getEnrollmentDate());
+            enrollmentDto.setEnrollmentStatus(enrollment.getEnrollmentStatus());
+            enrollmentDto.setCourseCode(enrollment.getCourse().getCourseCode());
+            enrollmentDto.setCourseInstructor(enrollment.getCourse().getCourseInstructor());
+
+            enrollmentDto.setCourseId(enrollment.getCourse().getCourseId());
+            enrollmentDto.setCourseName(enrollment.getCourse().getCourseTitle());
+            dto.add(enrollmentDto);
+        }
+        return dto;
+    }
+
+    public List<EnrollmentDto> searchStudent(String studentName) {
+        List<Student> studentList = studentRepo.findByStudentNameContainingIgnoreCase(studentName);
+        List<EnrollmentDto> enrollDto = new ArrayList<>();
+
+        for (Student student : studentList) {
+            List<Enrollment> enrollments = enrollmentRepo.findByStudentId(student.getStudentId());
+            for (Enrollment enrollment : enrollments) {
+                EnrollmentDto enrollmentDto = new EnrollmentDto();
+                enrollmentDto.setEnrollmentId(enrollment.getEnrollmentId());
+                enrollmentDto.setStudentId(enrollment.getStudent().getStudentId());
+                enrollmentDto.setStudentName(enrollment.getStudent().getStudentName());
+                enrollmentDto.setStudentEmail(enrollment.getStudent().getStudentEmail());
+                enrollmentDto.setEnrollmentDate(enrollment.getEnrollmentDate());
+                enrollmentDto.setEnrollmentStatus(enrollment.getEnrollmentStatus());
+                enrollmentDto.setCourseCode(enrollment.getCourse().getCourseCode());
+                enrollmentDto.setCourseInstructor(enrollment.getCourse().getCourseInstructor());
+
+                enrollmentDto.setCourseId(enrollment.getCourse().getCourseId());
+                enrollmentDto.setCourseName(enrollment.getCourse().getCourseTitle());
+                enrollDto.add(enrollmentDto);
+            }
+        }
+        return enrollDto;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.shubham.Student.Course.Enrollment.System.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.shubham.Student.Course.Enrollment.System.Entity.Enums.EnrollmentGrade;
 import com.shubham.Student.Course.Enrollment.System.Entity.Enums.EnrollmentStatus;
 import jakarta.persistence.*;
 
@@ -24,14 +25,14 @@ public class Enrollment {
 
     @Enumerated(EnumType.STRING)
     private EnrollmentStatus enrollmentStatus;
-    private String enrollmentGrade;
+    private EnrollmentGrade enrollmentGrade;
 
     @PrePersist
     public void setEnrollmentDate(){
         enrollmentDate = LocalDate.now();
     }
 
-    public Enrollment(int enrollmentId, Student student, Course course, LocalDate enrollmentDate, EnrollmentStatus enrollmentStatus, String enrollmentGrade) {
+    public Enrollment(int enrollmentId, Student student, Course course, LocalDate enrollmentDate, EnrollmentStatus enrollmentStatus, EnrollmentGrade enrollmentGrade) {
         this.enrollmentId = enrollmentId;
         this.student = student;
         this.course = course;
@@ -83,11 +84,11 @@ public class Enrollment {
         this.enrollmentStatus = enrollmentStatus;
     }
 
-    public String getEnrollmentGrade() {
+    public EnrollmentGrade getEnrollmentGrade() {
         return enrollmentGrade;
     }
 
-    public void setEnrollmentGrade(String enrollmentGrade) {
+    public void setEnrollmentGrade(EnrollmentGrade enrollmentGrade) {
         this.enrollmentGrade = enrollmentGrade;
     }
 }

@@ -1,0 +1,419 @@
+*{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+body{
+    font-family: ubuntu;
+}
+.navbar-container{
+    background-color: #fff;
+    padding: 0.6em;
+    border-bottom: 2px solid #ddd;
+}
+.header-name{
+    margin-top: 0.2em;
+}
+.header-name i{
+    margin-top: 0.25em;
+    margin-right: 0.5em;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.header-name{
+    display: flex;
+    font-size: x-large;
+}
+
+.nav-list{
+    display: flex;
+    font-size: large;
+}
+.nav-list a{
+    padding: 0.5em 1em;
+    margin-right: 0.7em;
+    border-radius: 0.6em;
+    transition: 400ms ease;
+}
+.nav-link:hover{
+    background-color: #eee;
+    border-radius: 0.6em;
+}
+.nav-list a:hover small{
+    color: black;
+    background-color: #fff;
+}
+.dashboard{
+    pointer-events: none;
+}
+.nav-num{
+    background-color: #eee;
+    padding: 0.1em 0.5em;
+    margin-left: 1em;
+    border-radius: 0.3em;
+    color: black;
+}
+.nav-list a i{
+    margin-right: 1em;
+}
+
+.enroll-header{
+    display: flex;
+    justify-content: space-between;
+}
+.enroll-btn button{
+    padding: 0.5em 1.5em;
+    background-color: black;
+    color: white;
+    border-radius: 0.5em;
+    margin-top: 0.6em;
+}
+
+.enroll-btn button i{
+    position: relative;
+    top: 0.2em;
+}
+
+
+.container1{
+    display: flex;
+    justify-content: space-between;
+}
+.search-enroll i{
+    position: relative;
+    left: 2.5em;
+    top: 0.2em;
+    color: gray;
+}
+.search-enroll input{
+    width: 30em;
+    border: 1px solid #ddd;
+    padding: 0.5em 3em;
+    background-color: #eeeeee99;
+    border-radius: 0.5em;
+}
+
+
+:root{
+    --enrollColor1green:rgba(192, 255, 192,0.6);
+    --enrollColor2green:darkgreen;
+    --enrollColor1red:rgba(255, 167, 167, 0.3);
+    --enrollColor2red:rgb(178, 0, 0);
+    --enrollColor1yellow:rgba(255, 244, 149, 0.5);
+    --enrollColor2yellow:rgb(158, 158, 0);
+    --enrollColor1blue:rgba(149, 172, 255, 0.5);
+    --enrollColor2blue:darkblue;
+    --enrollColor1orange:rgba(255, 214, 149, 0.5);
+    --enrollColor2orange:rgb(188, 122, 0);
+}
+.green{
+    background-color: var(--enrollColor1green);
+    color: var(--enrollColor2green);
+}
+.red{
+    background-color: var(--enrollColor1red);
+    color: var(--enrollColor2red);  
+}
+.blue{
+    background-color: var(--enrollColor1blue);
+    color: var(--enrollColor2blue);
+}
+.yellow{
+    background-color: var(--enrollColor1yellow);
+    color: var(--enrollColor2yellow);
+}
+.orange{
+    background-color: var(--enrollColor1orange);
+    color: var(--enrollColor2orange);
+}
+.container2{
+    border: 1px solid #ddd;
+    border-radius: 1.5em;
+}
+.enroll-record-table table{
+    width: 100%;
+}
+.head-row{
+    font-size: larger;
+    text-align: left;
+}
+.head-row th{
+    padding: 1em;
+}
+.row{
+    border-top: 1px solid #ddd;
+}
+.row-item{
+    display: flex;
+    padding: 1em;
+    overflow-x: hidden;
+}
+.row-item div{
+    padding: 0.7em;
+}
+.user-icon{
+    position: relative;
+    top: 0.3em;
+    padding: 0.6em;
+    border-radius: 50%;
+    background-color: rgb(189, 238, 255);
+    color: rgb(66, 66, 255);
+}
+.enroll-grey{
+    color: grey;
+}
+.course-icon{
+    position: relative;
+    top: 0.3em;
+    padding: 0.6em;
+    border-radius: 50%;
+    color: rgb(0, 178, 0);
+    background-color: rgb(192, 255, 192);
+}
+.calender-icon{
+    position: relative;
+    top: 0.1em;
+    font-size: larger;
+}
+.action-end{
+    text-align: right;
+}
+.action-end i{
+    margin: 0px 0.5em;
+    font-size: larger;
+    cursor: pointer;
+}
+.status{
+    padding: 0.5em;
+    border-radius: 0.6em;
+}
+.edit-enroll{
+    color: rgb(58, 58, 255);
+}
+.delete-enroll{
+    color: rgb(255, 48, 48);
+}
+
+
+.container3{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0px;
+    left: 0px;
+    z-index: 1000; 
+    display: none;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+}
+.form-container{
+    width: 50%;
+    max-height: 100%;
+    background-color: white;
+    border-radius: 1.5em;
+    padding: 1.5em;
+    overflow: hidden;
+}
+.form-con{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+}
+.form-row{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+}
+.form-container strong{
+    font-size: x-large;
+}
+.form-container p{
+    color: gray;
+}
+#cancel-btn{
+    border: 1px solid #ccc;
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+}
+.button-container{
+    margin-top: 3em;
+    float: right;
+}
+#cancel-btn:hover{
+    background-color: #eee;
+}
+#add-btn{
+    background-color: black;
+    color: white;
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+}
+.form-row input{
+    background-color: #eeeeeed3;
+    height: 2em;
+    border-radius: 0.4em;
+    padding: 0.5em;
+}
+.form-row Select{
+    background-color: #eeeeeed3;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+.form-row option{
+    background-color: #eeeeeed3;
+}
+
+
+.search-con{
+    width: 43.5em;
+    max-height: 250px;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    border-radius: 0.3em;
+    position: absolute;
+    top: 19em;
+}
+.item-div{
+    width: 100%;
+    border-top: 1px solid #ddd;
+    padding: 0.5em;
+    cursor: pointer;
+}
+.item-div p{
+    color: black;
+}
+
+
+.search-crs{
+    width: 43.5em;
+    max-height: 250px;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    border-radius: 0.3em;
+    position: absolute;
+    top: 23.5em;
+}
+.crs-div{
+    width: 100%;
+    border-top: 1px solid #ddd;
+    padding: 0.5em;
+    cursor: pointer;
+}
+.crs-div p{
+    color: black;
+}
+
+
+
+
+.container4{
+    position: fixed;
+    top: 3em;
+    right: -0.5em;
+    padding: 1em 15em 1em 1em;
+    border-radius: 0.5em;
+    z-index: 1000;
+    animation: slide 1s ease;
+    display: none;
+}
+.container4 i{
+    position: relative;
+    top: 0.2em;
+    right: 0.3em;
+}
+.container4.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+.container4-back{
+    animation: fadeOut 1s ease;
+}
+.enroll-success{
+    background-color: rgb(17, 40, 27);
+    color: rgb(111, 255, 176);
+}
+.enroll-fail{
+    background-color: rgb(40, 17, 17);
+    color: rgb(255, 111, 111);
+}
+@keyframes slide{
+    from{
+        transform: translateX(100%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fadeOut{
+    to{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+
+.container5{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0px;
+    left: 0px;
+    z-index: 1000; 
+    display: none;
+}
+.grade-form{
+    display: none;
+}
+#updateStudent{
+    color: rgb(97, 97, 97);
+    background-color: #f2f2f2;
+}
+#updateStudent:focus{
+    outline: none;
+    border: none;
+}
+#updateCourse{
+    color: rgb(97, 97, 97);
+    background-color: #f2f2f2;
+}
+#updateCourse:focus{
+    outline: none;
+    border: none;
+}
+#update-btn{
+    background-color: black;
+    color: white;
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+}
+#update-cancel-btn{
+    border: 1px solid #ccc;
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+}
+#update-cancel-btn:hover{
+    background-color: #eee;
+}
+
