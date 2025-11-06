@@ -4,17 +4,35 @@ This is a Spring Boot application that handles student enrollments for courses. 
 
 ## 🎨 Frontend
 
-- ### Dashboard Page
-![App Screenshot](./Images_Videos/EduManage.png)
+### 🧭 Dashboard Page
+<p>
+  <img src="./Images_Videos/EduManage.png" alt="Dashboard Page" width="400"/>
+</p>
 
-- ### Student Page
-![App Screenshot](./Images_Videos/EduManage-Students.png)
+### 🎓 Students Page
+<p>
+  <img src="./Images_Videos/EduManage-Students.png" alt="Students Page" width="400"/>
+</p>
 
-- ### Student Page
-![App Screenshot](./Images_Videos/EduManage-Course.png)
+### 📚 Courses Page
+<p>
+  <img src="./Images_Videos/EduManage-Course.png" alt="Courses Page" width="400"/>
+</p>
 
-- ### Student Page
-![App Screenshot](./Images_Videos/EduManage-Enrollment.png)
+### 📝 Enrollment Page
+<p>
+  <img src="./Images_Videos/EduManage-Enrollment.png" alt="Enrollment Page" width="400"/>
+</p>
+
+---
+
+## 🎥 Demo Video
+<p>
+  <!-- Replace the link below with your GitHub asset video URL -->
+  <a href="https://github.com/your-username/your-repo/assets/your-video-id">
+    🎬 Click to Watch the Demo
+  </a>
+</p>
 
 
 ## 📌 Features
