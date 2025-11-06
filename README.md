@@ -2,6 +2,21 @@
 
 This is a Spring Boot application that handles student enrollments for courses. It supports basic CRUD operations for students, courses, and enrollments. The system uses proper DTOs, ModelMapper, and bi-directional JPA relationships (OneToMany/ManyToOne). Global exception handling is also implemented.
 
+## 🎨 Frontend
+
+- ### Dashboard Page
+![App Screenshot](./Images_Videos/EduManage.png)
+
+- ### Student Page
+![App Screenshot](./Images_Videos/EduManage-Students.png)
+
+- ### Student Page
+![App Screenshot](./Images_Videos/EduManage-Course.png)
+
+- ### Student Page
+![App Screenshot](./Images_Videos/EduManage-Enrollment.png)
+
+
 ## 📌 Features
 
 - Add, view, update, and delete Students
